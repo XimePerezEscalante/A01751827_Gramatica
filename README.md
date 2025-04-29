@@ -1,44 +1,62 @@
 # A01751827_Gramatica
 ## Descripción
-Una gramática es un sistema que define una serie de reglas para generar cadenas de texto válidas dentro de un lenguaje, ya que con ella se pueden construir oraciones sintácticamente correctas.
-Tomando en cuenta esta definición, el objetivo de esta evidencia es presentar una gramática. Para ello, se comenzó con la selección de un lenguaje, en este caso se trata del lenguaje de programación C++, específicamente las sentencias if … else. A continuación se presenta la estructura de las mismas:
-Condiciones: se comparan mínimo dos variables usando operadores de comparación y para agregar más, se usan operadores lógicos.
-Operaciones: incluyen operaciones matemáticas que se llevan a cabo si se cumple la condición.
-Operadores de comparación: >, <, >=, <=, ==, !=
-Operadores lógicos: ||, &&, !
-Operadores aritméticos: ++, --, +=, -=, +, -, /, //, %, =
-Variables: a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
-Números: 0,1,2,3,4,5,6,7,8,9
+
+Una **gramática** es un sistema que define una serie de reglas para generar cadenas de texto válidas dentro de un lenguaje. Gracias a ella, se pueden construir oraciones sintácticamente correctas.
+
+Tomando en cuenta esta definición, el objetivo de esta evidencia es **presentar una gramática**. Para ello, se comenzó con la selección de un lenguaje: en este caso, el lenguaje de programación **C++**, específicamente las sentencias `if ... else`.
+
+### Estructura de las sentencias `if ... else`
+
+- **Condiciones**: Se comparan al menos dos variables usando operadores de comparación. Para agregar más condiciones, se emplean operadores lógicos.
+- **Operaciones**: Incluyen operaciones matemáticas que se ejecutan si se cumple la condición.
+
+### Elementos
+
+- **Operadores de comparación**: `>`, `<`, `>=`, `<=`, `==`, `!=`
+- **Operadores lógicos**: `||`, `&&`, `!`
+- **Operadores aritméticos**: `++`, `--`, `+=`, `-=`, `+`, `-`, `/`, `//`, `%`, `=`
+- **Variables**: `a`–`z`
+- **Números**: `0`–`9`
+
+### Ejemplo de estructura general
+
+```cpp
 if (condición) {
-operación
+  operación;
+} else {
+  operación;
 }
-else {
-operación
-}
-<br>
-Gramática que reconoce el lenguaje
-  <br>
-A continuación se presenta una gramática que representa la sintaxis básica del lenguaje:
-  <br>
-A ::= if ( condicion ) { operacion ;  } E
-  <br>
+```
+
+---
+
+## Gramática que reconoce el lenguaje
+
+A continuación, se presenta una gramática que representa la sintaxis básica del lenguaje:
+
+```ebnf
+A ::= if ( condicion ) { operacion ; } E
+
 E ::= else A | else { operacion ; }
-  <br>
-condicion ::= elem  operador elem  | operadorlog condicion | condicion
-  <br>
-operacion ::=  elem  operadorarit | operacion |  elem
-  <br>
-operadorcomp ::=  > | < | == | != | <= | >=
-  <br>
-operadorlog ::=  || | && | !
-  <br>
-operadorarit ::= ++ | -- | += | -= | + | - | / | // | % | =  
-  <br>
+
+condicion ::= elem operador elem
+            | operadorlog condicion
+            | condicion
+
+operacion ::= elem operadorarit
+            | operacion
+            | elem
+
+operadorcomp ::= > | < | == | != | <= | >=
+
+operadorlog ::= || | && | !
+
+operadorarit ::= ++ | -- | += | -= | + | - | / | // | % | =
+
 elem ::= var | num
-  <br>
-var ::= a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z
-  <br>
+
+var ::= a | b | c | d | e | f | g | h | i | j | k | l | m
+      | n | o | p | q | r | s | t | u | v | w | x | y | z
+
 num ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-
-
+```
