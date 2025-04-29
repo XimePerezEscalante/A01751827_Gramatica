@@ -60,3 +60,6 @@ var ::= a | b | c | d | e | f | g | h | i | j | k | l | m
 
 num ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 ```
+
+## Eliminar ambigüedad
+El principal aspecto con ambigüedad comienza con **E**, ya que incluye: else A, por lo que se puede regresar a A y se perderá el camino recorrido para llegar hasta el final.
