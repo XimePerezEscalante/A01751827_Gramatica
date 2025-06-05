@@ -61,6 +61,30 @@ var ::= a | b | c | d | e | f | g | h | i | j | k | l | m
 num ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 ```
 
+## Eliminar ambigüedad
+
+**¿Dónde está localizada?**
+
+
 ## Eliminar recursión izquierda
+
+**¿Dónde está localizada?**
+
 - **condicion:** se llama a sí mismo.
 - **operación:** se llama a sí mismo.
+
+
+## Ejemplos
+
+
+## Implementación
+
+
+## Complejidad de la gramática
+
+
+### Antes de eliminar ambigüedad y recursividad izquierda
+
+
+### Después de eliminar ambigüedad y recursividad izquierda
+
