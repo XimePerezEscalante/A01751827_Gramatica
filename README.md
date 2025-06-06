@@ -120,15 +120,102 @@ A continuación muestro sólo 2 posibles ASTs para esta oración:
 
 ### ¿Dónde está localizada?
 
+Se encuentra en:
 
+`P ::= P Op P | P OpS | var | num`
+
+Ya que puede usarse P en dos lados distintos y como se llama a sí mismo, se generan ramas de ambos lados.
+
+**¿Cómo eliminarla?**
+
+Debemos agregar estados intermedios para eliminar los que son equivalentes y que generan las ramas desde múltiples lados, lo que genera una precedencia.
+Así que en lugar de únicamente usar P, se agrega el No terminal: **Elem** para que P ya no pueda ser var y num; **PL** el cual deriva de P, pero que 
+lleva un nombre diferente para que sea posible distinguir entre ellos en caso de que se quiera volver a usar el antes llamado P. 
+
+Gramática actualizada:
+
+```ebnf
+A ::= AL
+
+AL ::= Cond '(' P AP ')' '{' PT ';''}' E
+
+P ::= Elem Op Elem | Elem OpS | Elem Op PL
+
+PL ::= Elem Op Elem
+
+Elem ::= var | num
+
+AP ::=  OpL P | ε
+
+PT ::= var OpE P
+
+E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
+
+Cond ::= ‘if‘
+
+Op ::= ‘+’ | ‘-’ | ‘+=’ | ‘-=’ | ‘/’ | ‘%’ | '*'
+
+OpE ::= ‘=’
+
+OpS ::= ‘++’ | ‘--’
+
+OpL ::= ‘&&’ | ‘||’
+
+var ::= ‘a’ | ‘b’ | ‘c’ | ‘d’ | ‘e’ | ‘f’ | ‘g’ | ‘h’ | ‘i’ | ‘j’ | ‘k’ | ‘l’ | ‘m’ | ‘n’ | ‘o’ | ‘p’ | ‘q’ | ‘r’ | ‘s’ | ‘t’ | ‘u’ | ‘v’ | ‘w’ | ‘x’ | ‘y’ | ‘z’
+
+num ::= ‘0’ | ‘1’ | ‘2’ | ‘3’ | ‘4’ | ‘5’ | ‘6’ | ‘7’ | ‘8’ | ‘9’ | num num
+```
 
 ## Eliminar recursión izquierda
 
+La recursión izquierda puede identificarse cuando hay un No terminal que se manda llamar a sí mismo, lo que provoca problemas con el parser LL(1) ya que
+se pierde en el camino, al ir leyendo de izquierda a derecha, no le es posible saber el camino para llegar.
+
 **¿Dónde está localizada?**
 
-- **condicion:** se llama a sí mismo.
-- **operación:** se llama a sí mismo.
+`num ::= ‘0’ | ‘1’ | ‘2’ | ‘3’ | ‘4’ | ‘5’ | ‘6’ | ‘7’ | ‘8’ | ‘9’ | num num`
 
+Es visible que num se puede llamar a sí mismo 2 veces, en caso de que haya un número de dos dígitos.
+
+**¿Cómo eliminarla?**
+
+Se deben agregar dos estados: uno que sirve como intermedio y otro como terminal. En este caso son **N** y **NL**, el terminal continuará siendo _num_.
+
+```ebnf
+A ::= AL
+
+AL ::= Cond '(' P AP ')' '{' PT ';''}' E
+
+P ::= Elem Op Elem | Elem OpS | Elem Op PL
+
+PL ::= Elem Op Elem
+
+Elem ::= var | num
+
+AP ::=  OpL P | ε
+
+PT ::= var OpE P
+
+E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
+
+Cond ::= ‘if‘
+
+Op ::= ‘+’ | ‘-’ | ‘+=’ | ‘-=’ | ‘/’ | ‘%’ | '*'
+
+OpE ::= ‘=’
+
+OpS ::= ‘++’ | ‘--’
+
+OpL ::= ‘&&’ | ‘||’
+
+var ::= ‘a’ | ‘b’ | ‘c’ | ‘d’ | ‘e’ | ‘f’ | ‘g’ | ‘h’ | ‘i’ | ‘j’ | ‘k’ | ‘l’ | ‘m’ | ‘n’ | ‘o’ | ‘p’ | ‘q’ | ‘r’ | ‘s’ | ‘t’ | ‘u’ | ‘v’ | ‘w’ | ‘x’ | ‘y’ | ‘z’
+
+N ::= NL NL
+
+NL ::= num
+
+num ::= ‘0’ | ‘1’ | ‘2’ | ‘3’ | ‘4’ | ‘5’ | ‘6’ | ‘7’ | ‘8’ | ‘9’ | num num
+```
 
 ## Ejemplos
 
