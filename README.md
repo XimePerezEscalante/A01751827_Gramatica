@@ -47,7 +47,7 @@ E ::= ‘else’ '{' PT ';''}' | ε
 
 C ::= ‘if‘
 
-Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*' |
+Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*' 
 
 OpC ::= '>' | '<' | '=='
 
@@ -137,29 +137,23 @@ Eu ::= Elem OpC Et
 
 Et ::= Elem Em
 
-Em ::= Op Elem |
-
-Ex ::= Elem Op Elem
+Em ::= Op Elem | ε
 
 Elem ::= var | num
 
-AP ::= OpL Eu |
+AP ::= OpL Eu | ε
 
 PT ::= var OpE Et
 
-E ::= 'else' Ep |
+E ::= 'else' Ep | ε
 
-Ep ::= Epc Ept
-
-Epc: := if (P AP) | 
-
-Ept: := '{' PT ';' '}'
+Ep ::= '{' PT ';''}'
 
 C ::= 'if'
 
 Op ::= '+' | '-' | '/' | '%' | '*'
 
-OpC ::= '<' | '>' | '<=' | '>=' | '==' 
+OpC ::= '<' | '>' | '<=' | '>=' | '==' | '!='
 
 OpE ::= '=' | '+=' | '-='
 
@@ -226,6 +220,8 @@ var ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 
 
 num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 ```
+
+_Nota: Se añadió Ep como una decisión personal_
 
 ## Ejemplos
 
