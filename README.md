@@ -117,34 +117,53 @@ Ya que puede usarse P en dos lados distintos y como se llama a sí mismo, se gen
 **¿Cómo eliminarla?**
 
 Debemos agregar estados intermedios para eliminar los que son equivalentes y que generan las ramas desde múltiples lados, lo que genera una precedencia.
-Así que en lugar de únicamente usar P, se agrega el No terminal: **Elem** para que P ya no pueda ser var y num. 
+Así que en lugar de únicamente usar P, se agregaron:
+
+* Eu -> deriva de P para empezar usando una variable o número y un operador OpC, seguido de Et.
+* Et -> intermedio para agregar una variable o un número, seguido de Em.
+* Em -> se usa para agregar un operador Op y otro número o variable de ser necesarios, por lo que también puede ser nulo.
+* Elem -> intermedio que puede ser var o num y que así P deje de serlo.
+* Se sustituye P de PT por Et, para tener ese paso intermedio donde se puede agregar un elemento y si se requiere otro operador y elemento más.
+* En AP se sustituye P por Eu, ya que sigue dentro del paréntesis y puede realizar una comparación.
 
 Gramática actualizada:
 
 ```ebnf
-A ::= AL
+A ::= C '(' P AP ')' '{' PT ';''}' E
 
-AL ::= C '(' P AP ')' '{' PT ';''}' E
+P ::= Eu
 
-P ::= Elem Op Elem
+Eu ::= Elem OpC Et
+
+Et ::= Elem Em
+
+Em ::= Op Elem |
+
+Ex ::= Elem Op Elem
 
 Elem ::= var | num
 
-AP ::=  OpL P | ε
+AP ::= OpL Eu |
 
-PT ::= var OpE P
+PT ::= var OpE Et
 
-E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
+E ::= 'else' Ep |
 
-C ::= ‘if‘
+Ep ::= Epc Ept
 
-Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*'
+Epc: := if (P AP) | 
 
-OpC ::= '>' | '<' | "=="
+Ept: := '{' PT ';' '}'
 
-OpE ::= ‘=’ | ‘+=’ | ‘-=’
+C ::= 'if'
 
-OpL ::= ‘AND’ | ‘OR’
+Op ::= '+' | '-' | '/' | '%' | '*'
+
+OpC ::= '<' | '>' | '<=' | '>=' | '==' 
+
+OpE ::= '=' | '+=' | '-='
+
+OpL ::= 'AND' | 'OR'
 
 var ::= ‘a’ | ‘b’ | ‘c’ | ‘d’ | ‘e’ | ‘f’ | ‘g’ | ‘h’ | ‘i’ | ‘j’ | ‘k’ | ‘l’ | ‘m’ | ‘n’ | ‘o’ | ‘p’ | ‘q’ | ‘r’ | ‘s’ | ‘t’ | ‘u’ | ‘v’ | ‘w’ | ‘x’ | ‘y’ | ‘z’
 
@@ -177,8 +196,6 @@ Et ::= Elem Em
 
 Em ::= Op Elem | ε
 
-Ex ::= Elem Op Elem
-
 Elem ::= var | N
 
 AP ::= OpL Eu | ε
@@ -187,7 +204,7 @@ PT ::= var OpE Et
 
 E ::= 'else' Ep | ε
 
-Ep ::= K PT Pc Ke
+Ep ::= '{' PT ';' '}'
 
 C ::= 'if'
 
@@ -257,7 +274,15 @@ num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 A continuación se presetan oraciones que no deben ser aceptadas por la gramática:
 
 * if (i < j) {j += 7;} else {i += 5}
-*    _Razón:_ no hay ; después del 5.
+  * _Razón:_ no hay ; después del 5.
+* if x < y {a = b;}
+  * _Razón:_ no hay paréntesis.
+* if (a = b) {c = d ;}
+  * _Razón:_ no es válido el = dentro de los paréntesis.
+* if (x > ) {y = z ;}
+  * _Razón:_ no hay nada después del >.
+* if (12 <= 5) {a == b ;}
+  * _Razón:_ no hay ; después del 5.
 
 ## Implementación
 
@@ -272,6 +297,8 @@ Se utilizó la librería nltk en Python, por lo que es una dependencia para pode
 `python3 grammarc++.py`
 
 El usuario puede escoger entre ver las opciones predeterminadas o ingresar su propia oración, sin embargo, el uso de símbolos ajenos a la gramática conduce a errores.
+
+**_Nota: Se agregaron No terminales para los paréntesis, las llaves y el ; debido a que sin ellos, los árboles no tendrían una buena estructura_**
 
 ## Complejidad de la gramática
 
