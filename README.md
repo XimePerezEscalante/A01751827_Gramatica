@@ -35,9 +35,7 @@ if (condición) {
 A continuación, se presenta una gramática que representa la sintaxis básica del lenguaje utilizando la notación Extended Backus-Naur Form  (EBNF):
 
 ```ebnf
-A ::= AL
-
-AL ::= Cond '(' P AP ')' '{' PT ';''}' E
+A ::= C '(' P AP ')' '{' PT ';''}' E
 
 P ::= P Op P | var | num
 
@@ -45,15 +43,15 @@ AP ::=  OpL P | ε
 
 PT ::= var OpE P
 
-E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
+E ::= ‘else’ '{' PT ';''}' | ε
 
-Cond ::= ‘if‘
+C ::= ‘if‘
 
 Op ::= ‘+’ | ‘-’ | ‘+=’ | ‘-=’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
 
 OpE ::= ‘=’
 
-OpL ::= ‘&&’ | ‘||’
+OpL ::= ‘AND’ | ‘OR’
 
 var ::= ‘a’ | ‘b’ | ‘c’ | ‘d’ | ‘e’ | ‘f’ | ‘g’ | ‘h’ | ‘i’ | ‘j’ | ‘k’ | ‘l’ | ‘m’ | ‘n’ | ‘o’ | ‘p’ | ‘q’ | ‘r’ | ‘s’ | ‘t’ | ‘u’ | ‘v’ | ‘w’ | ‘x’ | ‘y’ | ‘z’
 
@@ -124,7 +122,7 @@ Gramática actualizada:
 ```ebnf
 A ::= AL
 
-AL ::= Cond '(' P AP ')' '{' PT ';''}' E
+AL ::= C '(' P AP ')' '{' PT ';''}' E
 
 P ::= Elem Op Elem
 
@@ -136,15 +134,13 @@ PT ::= var OpE P
 
 E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
 
-Cond ::= ‘if‘
+C ::= ‘if‘
 
-Op ::= ‘+’ | ‘-’ | ‘+=’ | ‘-=’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
+Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
 
-OpE ::= ‘=’
+OpE ::= ‘=’ | ‘+=’ | ‘-=’
 
-OpS ::= ‘++’ | ‘--’
-
-OpL ::= ‘&&’ | ‘||’
+OpL ::= ‘AND’ | ‘OR’
 
 var ::= ‘a’ | ‘b’ | ‘c’ | ‘d’ | ‘e’ | ‘f’ | ‘g’ | ‘h’ | ‘i’ | ‘j’ | ‘k’ | ‘l’ | ‘m’ | ‘n’ | ‘o’ | ‘p’ | ‘q’ | ‘r’ | ‘s’ | ‘t’ | ‘u’ | ‘v’ | ‘w’ | ‘x’ | ‘y’ | ‘z’
 
