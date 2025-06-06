@@ -256,7 +256,8 @@ num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 
 A continuación se presetan oraciones que no deben ser aceptadas por la gramática:
 
-* if (i < j) {j += 7;} else {i += 5}  _Razón:_ no hay ; después del 5.
+* if (i < j) {j += 7;} else {i += 5}
+*    _Razón:_ no hay ; después del 5.
 
 ## Implementación
 
@@ -270,11 +271,22 @@ Se utilizó la librería nltk en Python, por lo que es una dependencia para pode
 
 `python3 grammarc++.py`
 
+El usuario puede escoger entre ver las opciones predeterminadas o ingresar su propia oración, sin embargo, el uso de símbolos ajenos a la gramática conduce a errores.
+
 ## Complejidad de la gramática
 
 
 ### Antes de eliminar ambigüedad y recursividad izquierda
 
+Tenemos una gramática libre de contexto con ambigüedad y recursividad izquierda, así que no puede ser leída por un parser LL(1) y como se muestra en la siguiente tabla:
+
+![Chomsky](https://www.cs.utexas.edu/~novak/chomsky.gif)
+
+Tenemos una complejidad de O(n^3), pero en clase vimos que puede ser O(n^2) o nlogn.
 
 ### Después de eliminar ambigüedad y recursividad izquierda
+
+Se sigue teniendo una gramática libre de contexto, pero ahora es determinística, según la jerarquía de Chomsky que se muestra a continuación:
+
+Esto lo sabemos porque esto es el resultado de la eliminación de la ambigüedad y la recursividad izquierda.
 
