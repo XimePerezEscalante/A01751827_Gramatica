@@ -115,6 +115,11 @@ actualmente y para demostrarlo pondré un ejemplo sencillo:
 
 A continuación muestro sólo 2 posibles ASTs para esta oración:
 
+**AST 1**
+![AST 1](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/AST1.png?raw=true)
+
+**AST 2**
+![AST 2]()
 
 ### ¿Dónde está localizada?
 
