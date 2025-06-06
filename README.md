@@ -119,7 +119,7 @@ A continuación muestro sólo 2 posibles ASTs para esta oración:
 ![AST 1](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/AST1.png?raw=true)
 
 **AST 2**
-![AST 2]()
+![AST 2](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/AST2.png?raw=true)
 
 ### ¿Dónde está localizada?
 
