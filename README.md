@@ -12,7 +12,7 @@ Tomando en cuenta esta definición, el objetivo de esta evidencia es **presentar
 
 ### Elementos
 
-- **Operadores de comparación**: `>`, `<`, `>=`, `<=`, `==`, `!=`
+- **Operadores de comparación**: `>`, `<`,`==`
 - **Operadores lógicos**: `OR`, `AND`, (No se usa && ni || porque en la implementación esto genera error)
 - **Operadores aritméticos**: `+=`, `-=`, `+`, `-`, `/`, `%`, `=`
 - **Variables**: `a`–`z`
@@ -47,7 +47,9 @@ E ::= ‘else’ '{' PT ';''}' | ε
 
 C ::= ‘if‘
 
-Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
+Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*' |
+
+OpC ::= '>' | '<' | '=='
 
 OpE ::= ‘=’ | ‘+=’ | ‘-=’
 
@@ -136,7 +138,9 @@ E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
 
 C ::= ‘if‘
 
-Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
+Op ::= ‘+’ | ‘-’ | ‘/’ | ‘%’ | '*'
+
+OpC ::= '>' | '<' | "=="
 
 OpE ::= ‘=’ | ‘+=’ | ‘-=’
 
@@ -189,7 +193,7 @@ C ::= 'if'
 
 Op ::= '+' | '-' | '/' | '%' | '*'
 
-OpC ::= '<' | '>' | '<=' | '>=' | '==' | '!='
+OpC ::= '<' | '>' | '<=' | '>=' | '=='
 
 OpE ::= '=' | '+=' | '-='
 
