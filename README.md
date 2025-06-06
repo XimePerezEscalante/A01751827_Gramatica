@@ -39,7 +39,7 @@ A ::= AL
 
 AL ::= Cond '(' P AP ')' '{' PT ';''}' E
 
-P ::= P Op P | P OpS | var | num
+P ::= P Op P | var | num
 
 AP ::=  OpL P | ε
 
@@ -52,8 +52,6 @@ Cond ::= ‘if‘
 Op ::= ‘+’ | ‘-’ | ‘+=’ | ‘-=’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
 
 OpE ::= ‘=’
-
-OpS ::= ‘++’ | ‘--’
 
 OpL ::= ‘&&’ | ‘||’
 
@@ -129,8 +127,7 @@ Ya que puede usarse P en dos lados distintos y como se llama a sí mismo, se gen
 **¿Cómo eliminarla?**
 
 Debemos agregar estados intermedios para eliminar los que son equivalentes y que generan las ramas desde múltiples lados, lo que genera una precedencia.
-Así que en lugar de únicamente usar P, se agrega el No terminal: **Elem** para que P ya no pueda ser var y num; **PL** el cual deriva de P, pero que 
-lleva un nombre diferente para que sea posible distinguir entre ellos en caso de que se quiera volver a usar el antes llamado P. 
+Así que en lugar de únicamente usar P, se agrega el No terminal: **Elem** para que P ya no pueda ser var y num. 
 
 Gramática actualizada:
 
@@ -139,9 +136,7 @@ A ::= AL
 
 AL ::= Cond '(' P AP ')' '{' PT ';''}' E
 
-P ::= Elem Op Elem | Elem OpS | Elem Op PL
-
-PL ::= Elem Op Elem
+P ::= Elem Op Elem
 
 Elem ::= var | num
 
@@ -186,9 +181,7 @@ A ::= AL
 
 AL ::= Cond '(' P AP ')' '{' PT ';''}' E
 
-P ::= Elem Op Elem | Elem OpS | Elem Op PL
-
-PL ::= Elem Op Elem
+P ::= Elem Op Elem 
 
 Elem ::= var | num
 
