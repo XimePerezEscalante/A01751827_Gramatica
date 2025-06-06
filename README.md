@@ -246,13 +246,13 @@ num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 
 **AST**
 
-![Oracion 5]()
+![Oracion 5](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/Oracion5.png?raw=true)
 
 ## Contraejemplos
 
 A continuación se presetan oraciones que no deben ser aceptadas por la gramática:
 
-* if (i < j) {j += 7;} else {i += 5}
+* if (i < j) {j += 7;} else {i += 5}  _Razón:_ no hay ; después del 5.
 
 ## Implementación
 
