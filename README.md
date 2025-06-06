@@ -73,23 +73,8 @@ Con esta gramática se pueden generar sentencias tan simples como:
 
 Al igual que cosas con más variables como:
 
-`if (b < c) {c++;} else {b++;}`
+`if (b < c) {c += 2;} else {b = c + n;}`
 
-Hasta ifs anidados:
-
-```
-if (a > 0 && a < 5) {
-  if (a % 2 == 0) {
-    a = a * 2;
-  }
-  else if (a != 1) {
-    a = a * 3;
-  }
-  else {
-    a--;
-  }
-}
-```
 
 **¡Pero hay un problema!**
 
