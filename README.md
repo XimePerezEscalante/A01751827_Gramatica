@@ -243,11 +243,15 @@ num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 
 **AST**
 
+![Oracion 1](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/Oracion1.png?raw=true)
+
 ### 2
 
 **Oración:** `if (a < 1) {a = b * 5;}`
 
 **AST**
+
+![Oracion 2](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/Oracion2.png?raw=true)
 
 ### 3
 
@@ -255,11 +259,15 @@ num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 
 **AST**
 
+![Oracion 3](https://github.com/XimePerezEscalante/A01751827_Gramatica/blob/main/Oracion3.png?raw=true)
+
 ### 4
 
-**Oración**
+**Oración:** `if (i < j) {j += 7;} else {i += 5;}`
 
 **AST**
+
+![Oracion 4]()
 
 ### 5
 
@@ -267,6 +275,9 @@ num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 
 **AST**
 
+![Oracion 5]()
+
+## Contraejemplos
 
 ## Implementación
 
