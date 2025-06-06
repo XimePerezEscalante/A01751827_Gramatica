@@ -164,7 +164,7 @@ Es visible que num se puede llamar a sí mismo 2 veces, en caso de que haya un n
 
 **¿Cómo eliminarla?**
 
-Se deben agregar dos estados: uno que sirve como intermedio y otro como terminal. En este caso son **N** y **NL**, el terminal continuará siendo _num_.
+Se deben agregar dos estados: uno que sirve como intermedio y otro como terminal. En este caso son **Np** y **Npc**, el terminal continuará siendo _num_.
 
 ```ebnf
 A ::= C '(' P AP '') '{' PT ';' '}' E
@@ -175,17 +175,17 @@ Eu ::= Elem OpC Et
 
 Et ::= Elem Em
 
-Em ::= Op Elem |
+Em ::= Op Elem | ε
 
 Ex ::= Elem Op Elem
 
 Elem ::= var | N
 
-AP ::= OpL Eu |
+AP ::= OpL Eu | ε
 
 PT ::= var OpE Et
 
-E ::= 'else' Ep |
+E ::= 'else' Ep | ε
 
 Ep ::= K PT Pc Ke
 
@@ -203,7 +203,7 @@ N ::= Np Npc
 
 Np ::= num
 
-Npc ::= num |
+Npc ::= num | ε
 
 var ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
 
