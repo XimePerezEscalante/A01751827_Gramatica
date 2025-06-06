@@ -13,8 +13,8 @@ Tomando en cuenta esta definición, el objetivo de esta evidencia es **presentar
 ### Elementos
 
 - **Operadores de comparación**: `>`, `<`, `>=`, `<=`, `==`, `!=`
-- **Operadores lógicos**: `||`, `&&`, `!`
-- **Operadores aritméticos**: `++`, `--`, `+=`, `-=`, `+`, `-`, `/`, `%`, `=`
+- **Operadores lógicos**: `OR`, `AND`, (No se usa && ni || porque en la implementación esto genera error)
+- **Operadores aritméticos**: `+=`, `-=`, `+`, `-`, `/`, `%`, `=`
 - **Variables**: `a`–`z`
 - **Números**: `0`–`9`
 
@@ -182,44 +182,103 @@ Es visible que num se puede llamar a sí mismo 2 veces, en caso de que haya un n
 Se deben agregar dos estados: uno que sirve como intermedio y otro como terminal. En este caso son **N** y **NL**, el terminal continuará siendo _num_.
 
 ```ebnf
-A ::= AL
+A ::= C Pa P AP Pr K PT Pc Ke E
 
-AL ::= Cond '(' P AP ')' '{' PT ';''}' E
+P ::= Eu
 
-P ::= Elem Op Elem 
+Eu ::= Elem OpC Et
 
-Elem ::= var | num
+Et ::= Elem Em
 
-AP ::=  OpL P | ε
+Em ::= Op Elem |
 
-PT ::= var OpE P
+Ex ::= Elem Op Elem
 
-E ::= ‘else’ '{' PT ';''}' | ‘else’ AL | ε
+Elem ::= var | N
 
-Cond ::= ‘if‘
+AP ::= OpL Eu |
 
-Op ::= ‘+’ | ‘-’ | ‘+=’ | ‘-=’ | ‘/’ | ‘%’ | '*' | '>' | '<' | '>=' | '<='
+PT ::= var OpE Et
 
-OpE ::= ‘=’
+E ::= 'else' Ep |
 
-OpS ::= ‘++’ | ‘--’
+Ep ::= K PT Pc Ke
 
-OpL ::= ‘&&’ | ‘||’
+C ::= 'if'
 
-var ::= ‘a’ | ‘b’ | ‘c’ | ‘d’ | ‘e’ | ‘f’ | ‘g’ | ‘h’ | ‘i’ | ‘j’ | ‘k’ | ‘l’ | ‘m’ | ‘n’ | ‘o’ | ‘p’ | ‘q’ | ‘r’ | ‘s’ | ‘t’ | ‘u’ | ‘v’ | ‘w’ | ‘x’ | ‘y’ | ‘z’
+Op ::= '+' | '-' | '+=' | '-=' | '/' | '%' | '*'
 
-N ::= NL NL
+OpC ::= '<' | '>' | '<=' | '>=' | '==' | '!='
 
-NL ::= num
+OpE ::= '='
 
-num ::= ‘0’ | ‘1’ | ‘2’ | ‘3’ | ‘4’ | ‘5’ | ‘6’ | ‘7’ | ‘8’ | ‘9’ 
+OpL ::= 'AND' | 'OR'
+
+Pa ::= '('
+
+Pr ::= ')'
+
+K ::= '{'
+
+Ke ::= '}'
+
+Pc ::= ';'
+
+N ::= Np Npc
+
+Np ::= num
+
+Npc ::= num |
+
+var ::= 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
+
+num ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
 ```
 
 ## Ejemplos
 
+### 1
+
+**Oración**
+
+**AST**
+
+### 2
+
+**Oración**
+
+**AST**
+
+### 3
+
+**Oración**
+
+**AST**
+
+### 4
+
+**Oración**
+
+**AST**
+
+### 5
+
+**Oración**
+
+**AST**
+
 
 ## Implementación
 
+Se utilizó la librería nltk en Python, por lo que es una dependencia para poder usar este programa.
+
+**Instalar:**
+
+`pip install nltk`
+
+**Ejecutar**
+
+`python3 grammarc++.py`
 
 ## Complejidad de la gramática
 
