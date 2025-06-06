@@ -182,7 +182,7 @@ Es visible que num se puede llamar a sí mismo 2 veces, en caso de que haya un n
 Se deben agregar dos estados: uno que sirve como intermedio y otro como terminal. En este caso son **N** y **NL**, el terminal continuará siendo _num_.
 
 ```ebnf
-A ::= C Pa P AP Pr K PT Pc Ke E
+A ::= C '(' P AP '') '{' PT ';' '}' E
 
 P ::= Eu
 
@@ -213,16 +213,6 @@ OpC ::= '<' | '>' | '<=' | '>=' | '==' | '!='
 OpE ::= '=' | '+=' | '-='
 
 OpL ::= 'AND' | 'OR'
-
-Pa ::= '('
-
-Pr ::= ')'
-
-K ::= '{'
-
-Ke ::= '}'
-
-Pc ::= ';'
 
 N ::= Np Npc
 
