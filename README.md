@@ -309,7 +309,15 @@ Tenemos una complejidad de O(n^3), pero en clase vimos que puede ser O(n^2) o nl
 
 ### Después de eliminar ambigüedad y recursividad izquierda
 
-Se sigue teniendo una gramática libre de contexto, pero ahora es determinística, según la jerarquía de Chomsky que se muestra a continuación:
+Se sigue teniendo una gramática libre de contexto, pero ahora es determinística, según la jerarquía de Chomsky porque esto es el resultado de la eliminación de la ambigüedad y la recursividad izquierda.
 
-Esto lo sabemos porque esto es el resultado de la eliminación de la ambigüedad y la recursividad izquierda.
+### Referencias
 
+GeeksforGeeks. (n.d.). Chomsky hierarchy in Theory of Computation. GeeksforGeeks.
+https://www.geeksforgeeks.org/chomsky-hierarchy-in-theory-of-computation/
+
+Bell, T., Witten, I. H., & Fellows, M. (n.d.). Grammars and parsing. In CS Field Guide. University of Canterbury.
+https://www.csfieldguide.org.nz/en/chapters/formal-languages/grammars-and-parsing/
+
+GeeksforGeeks. (n.d.). Removal of ambiguity: Converting an ambiguous grammar into unambiguous grammar. GeeksforGeeks.
+https://www.geeksforgeeks.org/removal-of-ambiguity-converting-an-ambiguos-grammar-into-unambiguos-grammar/
